@@ -1,10 +1,13 @@
-import  mongoose, { Schema, model } from  "mongoose";
+import  mongoose, { Schema, models } from  "mongoose";
 
   const UserSchema = new Schema({
+    username: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
-      unique: true,
-      required: [true, "Email is required"],
+      required: true,
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
         "Email is invalid",
@@ -12,11 +15,7 @@ import  mongoose, { Schema, model } from  "mongoose";
     },
     password: {
       type: String,
-      required: true
-    },
-    name: {
-      type: String,
-      required: [true, "Name is required"]
+      required: true,
     }
   },
   {
@@ -24,5 +23,5 @@ import  mongoose, { Schema, model } from  "mongoose";
   }
 );
 
-const  User  =  mongoose.models?.User  ||  model('User', UserSchema);
+const User = models.User || mongoose.model('User', UserSchema);
 export  default  User;

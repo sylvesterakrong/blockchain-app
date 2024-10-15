@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Outfit } from "next/font/google";
-import { Provider } from  "./provider";
+import { AuthProvider } from  "./Providers";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -13,9 +13,9 @@ export const metadata = {
 export default function RootLayout({children}) {
   return (
     <html lang="en" suppressHydrationWarning> 
-      <Provider>
+      <AuthProvider>
         <body className={outfit.className}>{children}</body>
-      </Provider>
+      </AuthProvider>
     </html>
   );
 }
